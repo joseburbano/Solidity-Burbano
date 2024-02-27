@@ -1,5 +1,5 @@
 //Started choose the version
-pragma solidity >>=0.4.4 <0.7.0;
+pragma solidity >=0.4.4 <0.7.0;
 
 contract globalFunctions {
 
