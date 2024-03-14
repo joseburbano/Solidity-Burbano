@@ -2,9 +2,9 @@
 //Indicates the version
 pragma solidity >=0.4.4 <0.7.0;
 
-contract causasBeneficas{
+contract causesBeneficial{
 
-    //Declaraciones necesarios
+    //Statements required
     struct Causa{
         uint Id;
         string name;
@@ -15,13 +15,13 @@ contract causasBeneficas{
     uint contador_causas=0;
     mapping (string => Causa) causas;
 
-    //Permite dar de alta una nueva causa
+    //Allows you to register a new case
     function nuevaCausa(string memory _nombre, uint _precio_objectivo) public payable{
         contador_causas = contador_causas++;
         causas[_nombre] = Causa(contador_causas, _nombre, _precio_objectivo, 0);
     }
 
-    //Esta funcion nos devuelve true en caso de que podamos donar a una causa y false en caso contrario
+    //This function returns true if we can donate to a cause and false otherwise.
 
     function objetivoCumplido(string memory _nombre, uint _donar) private view returns(bool){
 
@@ -36,7 +36,7 @@ contract causasBeneficas{
     }
 
 
-    //Esta funcion nos permite donar a una causa
+    //This function allows us to donate to a cause
     function donar(string memory _nombre, uint _cantidad) public returns(bool){
 
         bool aceptar_donacion=true;
@@ -49,7 +49,7 @@ contract causasBeneficas{
         return aceptar_donacion;
     }
 
-    //Esta funcion nos dice si hemos llegado al precio objetivo
+    //This function tells us if we have reached the target price.
     function comprobar_causa(string memory _nombre) public view returns(bool, uint){
 
         bool limite_alcanzado = false;
