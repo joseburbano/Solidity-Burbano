@@ -53,6 +53,4 @@ contract Operators {
             return true;
         }
     }
-
-
 }
