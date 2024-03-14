@@ -2,45 +2,45 @@
 //Indicates the version
 pragma solidity >=0.4.4 <0.7.0;
 
-contract Estructuras {
+contract Structures {
 
-    //Cliente de una pagina web de pago
-    struct cliente {
+    //Client of a payment website
+    struct customer {
         uint id;
         string name;
         string dni;
-        string mail;
+        string email;
         uint phone_number;
         uint credit_number;
         uint secret_number;
     }
 
-    //Declaramos una variable de tipo cliente
-    cliente cliente_1 = cliente(1, "Joan", "12345678B", "joan@udemy.com", 12345678, 1234, 11);
+    //We declare a variable of type client
+    customer customer_1 = customer(1, "Jose", "12345678B", "jose@udemy.com", 12345678, 1234, 11);
 
-    //Amazon (cualquier pagina de compra venta de productos)
-    struct producto {
-        string nombre;
-        uint precio;
+    //Amazon (any product purchase and sale site)
+    struct product {
+        string name;
+        uint price;
     }
 
-    //Declaramos una variable de tipo producto
-    producto movil = producto("samsung", 300);
+    //We declare a variable of type product
+    product movil = product("samsung", 300);
 
-    //Proyecto cooperativo de ONGs para ayudar en diversas causas
+    //ONG cooperative project to help various causes
     struct ONG {
         address ong;
-        string nombre;
+        string name;
     }
-    //Declaramos una variable de tipo ONG
+    //We declare a variable of type ONG
     //ONG caritas;
     ONG caritas = ONG(0x5B38Da6a701c568545dCfcB03FcB875f56beddC4, "Caritas");
 
-    struct Causa {
+    struct Cause {
         uint id;
-        string nombre;
-        uint precio_objetivo;
+        string name;
+        uint price_objet;
     }
-    //Declaramos una variable de tipo Causa
-    Causa medicamentos = Causa(1, "medicamentos", 1000);
+    //We declare a variable of type Cause
+    Cause medicines = Cause(1, "medicamentos", 1000);
 }
