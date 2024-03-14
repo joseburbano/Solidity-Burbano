@@ -1,55 +1,55 @@
 // SPDX-License-Identifier: MIT
-//Indicando la version
+//Indicating the version
 pragma solidity >=0.4.4 <0.7.0;
 
-contract Operadores{
+contract Operators {
 
-    // Operadores matematicos
+    // Mathematical operators
     uint a = 32;
     uint b = 4;
 
-    uint public suma = a+b;
-    uint public resta = a-b;
-    uint public division = a/b;
-    uint public multiplicacion = a*b;
-    uint public residuo = a%b;
-    uint public exponenciacion = a**b;
+    uint public sum = a + b;
+    uint public subtract = a - b;
+    uint public division = a / b;
+    uint public multiplication = a * b;
+    uint public waste = a % b;
+    uint public exponentiation = a ** b;
 
-    //Comparar enteros
+    //Compare integers
     uint c = 3;
     uint d = 3;
 
 
-    bool public test_1 = a>b;
-    bool public test_2 = a<b;
-    bool public test_3 = c==d;
-    bool public test_4 = a==d;
-    bool public test_5 = a!=b;
-    bool public test_6 = a>=b;
+    bool public test_1 = a > b;
+    bool public test_2 = a < b;
+    bool public test_3 = c == d;
+    bool public test_4 = a == d;
+    bool public test_5 = a != b;
+    bool public test_6 = a >= b;
 
-    //Operadores booleanos
+    //Boolean operators
 
-    //Criterio de divisibilidad entre 5: si el numero termina en 0 o en 5
+    //Criterion of divisibility by 5: if the number ends in 0 or 5.
 
-    function divisibilidad(uint _k) public pure returns(bool){
+    function divisibility(uint _k) public pure returns (bool){
 
-        uint ultima_cifra = _k%10;
+        uint last_chart = _k % 10;
 
-        if((ultima_cifra==0)||(ultima_cifra==5)){
+        if ((last_chart == 0) || (last_chart == 5)) {
             return true;
-        }else{
+        } else {
             return false;
         }
 
     }
 
-    function divisibilidadV2(uint _k) public pure returns(bool){
+    function divisibilityV2(uint _k) public pure returns (bool){
 
-        uint ultima_cifra = _k%10;
+        uint last_chart = _k % 10;
 
-        if((ultima_cifra!=0)&&(ultima_cifra!=5)){
+        if ((last_chart != 0) && (last_chart != 5)) {
             return false;
-        }else{
+        } else {
             return true;
         }
     }
