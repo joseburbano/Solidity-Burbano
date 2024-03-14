@@ -3,59 +3,56 @@
 pragma solidity >=0.4.4 <0.7.0;
 pragma experimental ABIEncoderV2;
 
-contract funciones{
+contract functions {
 
-    //Añadir dentro de un array de direcciones, la direccion de la persona que llame a la funcion
-    address[] public direcciones;
+    //Add within an array of addresses, the address of the person who calls the function
+    address[] public addresses;
 
-    function nuevaDireccion() public{
-        direcciones.push(msg.sender);
+    function newAddress() public {
+        addresses.push(msg.sender);
     }
 
-    //Computar el hash de los datos propocionados como parametro
+    //Computing the hash of the data provided as a parameter
     bytes32 public hash;
 
-    function hash(string memory _datos) public{
-        hash = keccak256(abi.encodePacked(_datos));
+    function hash(string memory _data) public {
+        hash = keccak256(abi.encodePacked(_data));
     }
 
-    //Declaramos un tipo de dato complejo, que es comida
-    struct comida{
-        string nombre;
-        string ingredientes;
+    //We declare a complex data type, which is food.
+    struct foot {
+        string name;
+        string ingredients;
     }
 
-    //Vamos a crear un tipo de dato complejo comida
-    comida public hamburguesa;
+    //Let's create a complex data type food
+    foot public hamburger;
 
-    function Hamburguesas(string memory _ingredientes) public{
-        hamburguesa = comida("hamburguesa", _ingredientes);
+    function Hamburgers(string memory _ingredients) public {
+        hamburger = comida("hamburger", _ingredients);
     }
 
-    //Declaramos un tipo de dato complejo, alumno
-    struct alumno{
-        string nombre;
-        address direccion;
-        uint edad;
+    //We declare a complex data type, learner
+    struct student {
+        string name;
+        address addresss;
+        uint age;
     }
 
-    bytes32 public hash_Id_alumno;
+    bytes32 public hash_Id_student;
 
-    //calculamos el hash del alumno
-    function hashIdAlumno(string memory _nombre, address _direccion, uint _edad) private{
-        hash_Id_alumno = keccak256(abi.encodePacked(_nombre, _direccion, _edad));
+    //we calculate the student's hash
+    function hashIdStudent(string memory _name, address _address, uint _age) private {
+        hash_Id_student = keccak256(abi.encodePacked(_name, _address, _age));
     }
 
-    //Guardamos con la funcion publica dentro de una lista los alumnos
-    alumno[] public lista;
-    mapping (string => bytes32) alumnos;
+    //We save with the public function in a list of students
+    student[] public list;
+    mapping(string => bytes32) students;
 
-    function nuevoAlumno(string memory _nombre, uint _edad) public{
-        lista.push(alumno(_nombre, msg.sender, _edad));
-        hashIdAlumno(_nombre, msg.sender, _edad);
-        alumnos[_nombre] = hash_Id_alumno;
+    function newStudent(string memory _name, uint _age) public {
+        list.push(student(_name, msg.sender, _age));
+        hashIdStudent(_name, msg.sender, _age);
+        students[_name] = hash_Id_student;
     }
-
-
-
 }
