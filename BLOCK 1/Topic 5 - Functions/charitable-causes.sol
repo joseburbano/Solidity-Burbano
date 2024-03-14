@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: MIT
-//Especificamos la version
+//Indicates the version
 pragma solidity >=0.4.4 <0.7.0;
 
 contract causasBeneficas{
