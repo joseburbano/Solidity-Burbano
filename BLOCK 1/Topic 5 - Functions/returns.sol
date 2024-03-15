@@ -2,71 +2,68 @@
 //Indicates the version
 pragma solidity >=0.4.4 <0.7.0;
 
-contract ValoresDeRetorno{
+contract ReturnValues {
 
-    //Funcion que nos devuelva un saludo
-    function saludos() public returns(string){
-        return "saludos";
+    //Function that returns a greeting
+    function greetings() public returns (string){
+        return "greetings";
     }
 
-    //Esta funcion calcula el resultado de una multiplicacion de dos numeros enteros
-    function Multiplicacion(uint _a, uint _b) public returns(uint){
-        return _a*_b;
+    //This function calculates the result of a multiplication of two integers.
+    function Multiplication(uint _a, uint _b) public returns (uint){
+        return _a * _b;
     }
 
-    //Esta funcion devuelve true si el numero es par y false en caso contrario
-    function par_impar(uint _a) public returns(bool){
+    //This function returns true if the number is even and false otherwise.
+    function odd_even(uint _a) public returns (bool){
 
         bool flag;
 
-        if(_a%2==0){
-            flag=true;
-        }else{
-            flag=false;
+        if (_a % 2 == 0) {
+            flag = true;
+        } else {
+            flag = false;
         }
 
         return flag;
     }
 
-    //Realizamos una funcion que nos devuelve el cociente y el residuo de una division
-    // ademas de una variable booleana que es true si el residuo es 0 y false en caso contrario
-    function division(uint _a, uint _b) public returns(uint, uint, bool){
-        uint q = _a/_b;
+    //We perform a function that returns the quotient and the remainder of a division.
+// plus a boolean variable that is true if the remainder is 0 and false otherwise
+    function division(uint _a, uint _b) public returns (uint, uint, bool){
+        uint q = _a / _b;
         uint r = _a % _b;
-        bool multiplo=false;
+        bool multiplo = false;
 
-        if(r==0){
-            multiplo=true;
+        if (r == 0) {
+            multiplo = true;
         }
 
-        return (q,r,multiplo);
+        return (q, r, multiplo);
     }
 
-    //Practica para el manejo de los valores devueltos
+    //Practice for handling returned values
 
-    function numeros() public returns(uint, uint, uint, uint, uint, uint){
-        return (1,2,3,4,5,6);
+    function numbers() public returns (uint, uint, uint, uint, uint, uint){
+        return (1, 2, 3, 4, 5, 6);
     }
 
-    //Asignacion multiple
+    //Multiple assignment
+    function all_values() public {
 
-    function todos_los_valores() public{
-
-        //Declaramos las variables donde se guardan los valores de retorno de la funcion numeros()
+        //We declare the variables where the return values of the function numbers() are stored.
         uint a;
         uint b;
         uint c;
         uint d;
         uint e;
         uint f;
-        //Realizar la asignacion multiple
-        (a,b,c,d,e,f)=numeros();
+        //Perform multiple assignment
+        (a, b, c, d, e, f) = numbers();
     }
 
-    function ultimo_valor() public{
+    function last_value() public {
 
-        (,,,,,uint ultimo)=numeros();
+        (,,,,,uint last) = numbers();
     }
-
-
 }
