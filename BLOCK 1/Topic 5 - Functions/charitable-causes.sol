@@ -2,64 +2,62 @@
 //Indicates the version
 pragma solidity >=0.4.4 <0.7.0;
 
-contract causesBeneficial{
+contract causesBeneficial {
 
     //Statements required
-    struct Causa{
+    struct Cause {
         uint Id;
         string name;
-        uint precio_objectivo;
-        uint cantidad_recaudada;
+        uint price_object;
+        uint amount_recovered;
     }
 
-    uint contador_causas=0;
-    mapping (string => Causa) causas;
+    uint counter_causes = 0;
+    mapping(string => Cause) causes;
 
     //Allows you to register a new case
-    function nuevaCausa(string memory _nombre, uint _precio_objectivo) public payable{
-        contador_causas = contador_causas++;
-        causas[_nombre] = Causa(contador_causas, _nombre, _precio_objectivo, 0);
+    function newCause(string memory _name, uint _price_object) public payable {
+        counter_causes = counter_causes++;
+        causas[_name] = Cause(counter_causes, _name, _price_object, 0);
     }
 
     //This function returns true if we can donate to a cause and false otherwise.
-
-    function objetivoCumplido(string memory _nombre, uint _donar) private view returns(bool){
+    function targetFulfilled(string memory _name, uint _donate) private view returns (bool){
 
         bool flag = false;
-        Causa memory causa = causas[_nombre];
+        Cause memory cause = causes[_name];
 
-        if(causa.precio_objectivo >= (causa.cantidad_recaudada+_donar)){
-            flag=true;
+        if (cause.price_object >= (cause.amount_recovered + _donate)) {
+            flag = true;
         }
         return flag;
 
     }
 
-
     //This function allows us to donate to a cause
-    function donar(string memory _nombre, uint _cantidad) public returns(bool){
+    function donate(string memory _name, uint _quantity) public returns (bool){
 
-        bool aceptar_donacion=true;
+        bool accept_donation = true;
 
-        if(objetivoCumplido(_nombre, _cantidad)){
-            causas[_nombre].cantidad_recaudada = causas[_nombre].cantidad_recaudada + _cantidad;
-        }else{
-            aceptar_donacion = false;
+        if (targetFulfilled(_name, _quantity)) {
+            causes[_name].amount_recovered = causes[_name].amount_recovered + _quantity;
+        } else {
+            accept_donation = false;
         }
-        return aceptar_donacion;
+        return accept_donation;
     }
 
     //This function tells us if we have reached the target price.
-    function comprobar_causa(string memory _nombre) public view returns(bool, uint){
+    function check_cause(string memory _name) public view returns (bool, uint){
 
-        bool limite_alcanzado = false;
-        Causa memory causa = causas[_nombre];
+        bool limit_reached = false;
+        Cause memory cause = causes[_name];
 
-        if(causa.cantidad_recaudada>=causa.precio_objectivo){
-            limite_alcanzado = true;
+        if (cause.amount_recovered >= cause.price_object) {
+            limit_reached = true;
         }
 
-        return (limite_alcanzado, causa.cantidad_recaudada);
+        return (limit_reached, cause.amount_recovered);
 
     }
 
