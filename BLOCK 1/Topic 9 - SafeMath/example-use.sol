@@ -1,7 +1,7 @@
 // SPDX-License-Identifier: MIT
 //Indicar la version
 pragma solidity >=0.4.4 <0.7.0;
-import "./SafeMath.sol";
+import "../../../BLOCK 1/Topic 9 - SafeMath/SafeMath.sol";
 
 
 contract calculosSeguros{
