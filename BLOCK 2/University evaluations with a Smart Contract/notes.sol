@@ -13,63 +13,62 @@ pragma experimental ABIEncoderV2;
 
 contract notes {
 
-    // Direccion del profesor
-    address public profesor;
+    // Teacher's address
+    address public professor;
 
     // Constructor 
     constructor () public {
-        profesor = msg.sender;
+        professor = msg.sender;
     }
 
-    // Mapping para relacionar el hash de la identidad del alumno con su nota del examen
-    mapping(bytes32 => uint) Notas;
+    // Mapping to relate the hash of the student's identity to his or her exam score
+    mapping(bytes32 => uint) Notes;
 
-    // Array de los alumnos de pidan revisiones de examen
-    string [] revisiones;
+    // Array of students requesting test revisions
+    string [] revisions;
 
-    // Eventos 
-    event alumno_evaluado(bytes32);
-    event evento_revision(string);
+    // Events
+    event student_evaluated(bytes32);
+    event event_revision(string);
 
-    // Funcion para evaluar a alumnos
-    function Evaluar(string memory _idAlumno, uint _nota) public UnicamenteProfesor(msg.sender) {
-        // Hash de la identificacion del alumno 
-        bytes32 hash_idAlumno = keccak256(abi.encodePacked(_idAlumno));
-        // Relacion entre el hash de la identificacion del alumno y su nota
-        Notas[hash_idAlumno] = _nota;
-        // Emision del evento
-        emit alumno_evaluado(hash_idAlumno);
+    // Function to evaluate students
+    function Evaluate(string memory _idStudent, uint _note) public OnlyProfessor(msg.sender) {
+        // Student ID Hash
+        bytes32 hash_idStudent = keccak256(abi.encodePacked(_idStudent));
+        // Relationship between the hash of the student ID and the student's grade
+        Notes[hash_idStudent] = _note;
+        // Broadcast of the event
+        emit student_evaluated(hash_idStudent);
     }
 
-    // Control de las funciones ejecutables por el profesor
-    modifier UnicamenteProfesor(address _direccion){
-        // Requiere que la direccion introducido por parametro sea igual al owner del contrato
-        require(_direccion == profesor, "No tienes permisos para ejecutar esta funcion.");
+    // Control of the functions executable by the teacher
+    modifier OnlyProfessor(address _address){
+        // Requires the address entered by parameter to be equal to the owner of the contract.
+        require(_address == professor, "You do not have permissions to run this function.");
         _;
     }
 
-    // Funcion para ver las notas de un alumno 
-    function VerNotas(string memory _idAlumno) public view returns (uint) {
-        // Hash de la identificacion del alumno 
-        bytes32 hash_idAlumno = keccak256(abi.encodePacked(_idAlumno));
-        // Nota asociada al hash del alumno
-        uint nota_alumno = Notas[hash_idAlumno];
-        // Visualizar la nota 
-        return nota_alumno;
+    // Function to view a student's grades
+    function SeeNotes(string memory _idStudent) public view returns (uint) {
+        // Student ID Hash
+        bytes32 hash_idStudent = keccak256(abi.encodePacked(_idStudent));
+        // Note associated with the student's hash
+        uint student_note = Notes[hash_idStudent];
+        // Display the note
+        return student_note;
     }
 
-    // Funcion para pedir una revision del examen
-    function Revision(string memory _idAlumno) public {
-        // Almacenamiento de la identidad del alumno en un array
-        revisiones.push(_idAlumno);
-        // Emision del evento 
-        emit evento_revision(_idAlumno);
+    // Function to request a review of the exam
+    function Review(string memory _idStudent) public {
+        // Storing the student's identity in an array
+        revisions.push(_idStudent);
+        // Broadcast of the event
+        emit event_revision(_idStudent);
     }
 
-    // Funcion para ver los alumnos que han solicitado revision de examen
-    function VerRevisiones() public view UnicamenteProfesor(msg.sender) returns (string [] memory){
-        // Devolver las identidades de los alumnos
-        return revisiones;
+    // Function to view students who have requested exam review
+    function SeeReviews() public view OnlyProfessor(msg.sender) returns (string [] memory){
+        // Return student identities
+        return revisions;
     }
-
 }
