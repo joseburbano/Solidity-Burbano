@@ -15,7 +15,7 @@ contract Require {
     uint time = 0;
     uint public wallet = 0;
 
-    function pagar(uint _quality) public returns (uint){
+    function pay(uint _quality) public returns (uint){
         require(now > time + 5 seconds, "You still can't pay");
         time = now;
         wallet = wallet + _quality;
@@ -25,7 +25,7 @@ contract Require {
     //function with a list
     string [] names;
 
-    function nuevoNombre(string memory _name) public {
+    function newName(string memory _name) public {
         for (uint i = 0; i < names.length; i++) {
             require(keccak256(abi.encodePacked(_nombre)) != keccak256(abi.encodePacked(names[i])), "already on the list");
         }
