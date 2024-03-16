@@ -3,7 +3,6 @@ pragma solidity >=0.4.4 <0.9.0;
 pragma experimental ABIEncoderV2;
 
 contract SmartContract1 {
-
     // Factory information storage
     mapping(address => address) public MyStaffContract;
 
@@ -14,7 +13,6 @@ contract SmartContract1 {
 }
 
 contract SmartContract2 {
-
     address public owner;
     constructor (address _address) public {
         owner = _address;
