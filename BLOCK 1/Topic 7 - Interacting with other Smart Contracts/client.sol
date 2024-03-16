@@ -1,34 +1,33 @@
 // SPDX-License-Identifier: MIT
 //Indicates the version
 pragma solidity >=0.4.4 <0.7.0;
-//import "./Banco.sol";
-import {Bank, Banco2} from "./bank.sol";
+//import "./bank.sol";
+import {Bank, Bank2} from "./bank.sol";
 
 
-contract Client is Banco{
+contract Client is Bank {
 
-    function AltaCliente(string memory _nombre) public{
-        nuevoCliente(_nombre);
+    function CustomerSignUp(string memory _name) public {
+        newClient(_name);
     }
 
-    function IngresarDinero(string memory _nombre, uint _cantidad) public{
-        clientes[_nombre].dinero = clientes[_nombre].dinero + _cantidad;
+    function LoginMoney(string memory _name, uint _quantity) public {
+        customers[_name].money = customers[_name].money + _quantity;
     }
 
-    function RetirarDinero(string memory _nombre, uint _cantidad) public returns(bool){
+    function WithdrawMoney(string memory _name, uint _quantity) public returns (bool){
         bool flag = true;
 
-        if(int(clientes[_nombre].dinero)-int(_cantidad) >= 0){
-            clientes[_nombre].dinero = clientes[_nombre].dinero - _cantidad;
-        }else{
+        if (int(customers[_name].dinero) - int(_quantity) >= 0) {
+            customers[_name].dinero = customers[_name].dinero - _quantity;
+        } else {
             flag = false;
         }
-
         return flag;
     }
 
-    function ConsultarDinero(string memory _nombre) public view returns(uint){
-        return clientes[_nombre].dinero;
+    function ConsultMoney(string memory _name) public view returns (uint){
+        return customers[_name].money;
     }
 }
 
