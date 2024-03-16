@@ -16,7 +16,7 @@ contract Modifier {
         _;
     }
 
-    function ejemplo1() public soloOwner() {
+    function example1() public soloOwner() {
         //Function code for the owner of the contract
     }
 
@@ -27,29 +27,26 @@ contract Modifier {
 
     mapping(string => address) customers;
 
-    function altaCliente(string memory _name) public {
+    function altaClient(string memory _name) public {
         customers[_name] = msg.sender;
     }
 
-    modifier soloClientes(string memory _name){
+    modifier onlyCustomers(string memory _name){
         require(customers[_name] == msg.sender);
         _;
     }
 
-    function ejemplo2(string memory _name) public soloClientes(_name) {
+    function example2(string memory _name) public onlyCustomers(_name) {
         //Functional logic for customers
     }
 
     //Driving example
-
     modifier MayorAge(uint _ageMinima, uint _ageUser){
         require(_ageUser >= _ageMinima);
         _;
     }
 
-    function conducir(uint _age) public MayorAge(18, _age) {
+    function drive(uint _age) public MayorAge(18, _age) {
         //Code to be executed for drivers of legal age
     }
-
-
 }
