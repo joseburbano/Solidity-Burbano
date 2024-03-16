@@ -23,13 +23,12 @@ contract Foot {
     function Ingredients(string memory _name) internal view returns (string memory){
         return ingredients[_name];
     }
-
 }
 
 contract Sandwitch is Foot {
 
     function sandwitch(string memory _ingredients, uint _time) external {
-        NuevoPlato("Sandwitch", _ingredients, _time);
+        NewDish("Sandwitch", _ingredients, _time);
     }
 
     function viewIngredients() external view returns (string memory){
