@@ -3,35 +3,32 @@
 pragma solidity >=0.4.4 <0.7.0;
 pragma experimental ABIEncoderV2;
 
-contract Require{
-    
-    //Funcion que verfique la contraseña
-    function password(string memory _pas) public pure returns(string memory){
-        require(keccak256(abi.encodePacked(_pas))==keccak256(abi.encodePacked("12345")), "Contraseña incorrecta");
-        return "contraseña correcta";
+contract Require {
+
+    //Password verification function
+    function password(string memory _password) public pure returns (string memory){
+        require(keccak256(abi.encodePacked(_password)) == keccak256(abi.encodePacked("12345")), "Incorrect password");
+        return "Correct password";
     }
-    
-    //Funcion para pagar
-    uint tiempo=0;
-    uint public cartera=0;
-    
-    function pagar(uint _cantidad) public returns(uint){
-        require(now > tiempo + 5 seconds, "Aun no puedes pagar");
-        tiempo = now;
-        cartera = cartera + _cantidad;
-        return cartera;
+
+    //Payment function
+    uint time = 0;
+    uint public wallet = 0;
+
+    function pagar(uint _quality) public returns (uint){
+        require(now > time + 5 seconds, "You still can't pay");
+        time = now;
+        wallet = wallet + _quality;
+        return wallet;
     }
-    
-    //funcion con una lista
-    
-    string [] nombres;
-    
-    function nuevoNombre(string memory _nombre) public{
-        for(uint i =0; i<nombres.length; i++){
-            require(keccak256(abi.encodePacked(_nombre))!=keccak256(abi.encodePacked(nombres[i])), "ya está en la lista");
+
+    //function with a list
+    string [] names;
+
+    function nuevoNombre(string memory _name) public {
+        for (uint i = 0; i < names.length; i++) {
+            require(keccak256(abi.encodePacked(_nombre)) != keccak256(abi.encodePacked(names[i])), "already on the list");
         }
-        
-        nombres.push(_nombre);
+        names.push(_name);
     }
-    
 }
