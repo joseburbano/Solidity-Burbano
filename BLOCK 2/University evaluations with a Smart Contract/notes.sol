@@ -3,7 +3,7 @@ pragma solidity >=0.4.4 < 0.7.0;
 pragma experimental ABIEncoderV2;
 
 // -----------------------------------
-//  ALUMNO   |    ID    |      NOTA
+//  STUDENTS   |    ID    |      NOTA
 // -----------------------------------
 //  Marcos |    77755N    |      5
 //  Joan   |    12345X    |      9
