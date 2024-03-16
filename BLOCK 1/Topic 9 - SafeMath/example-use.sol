@@ -1,28 +1,27 @@
-// SPDX-License-Identifier: MIT
-//Indicar la version
+//SPDX-License-Identifier: MIT
+//Indicates the version
 pragma solidity >=0.4.4 <0.7.0;
+
 import "../../../BLOCK 1/Topic 9 - SafeMath/SafeMath.sol";
 
 
-contract calculosSeguros{
-    
-    //Debemos declarar para que tipo de datos usaremos la libreria
+contract calculationsInsurance {
+
+    //We must declare for which type of data we will use the library
     using SafeMath for uint;
-    
-    //Funcion suma segura
-    
-    function suma(uint _a, uint _b) public pure returns(uint){
+
+    //Safe addition function
+    function sum(uint _a, uint _b) public pure returns (uint){
         return _a.add(_b);
     }
-    
-    //Funcion resta
-    function resta(uint _a, uint _b) public pure returns(uint){
+
+    //Subtraction function
+    function Subtraction(uint _a, uint _b) public pure returns (uint){
         return _a.sub(_b);
     }
-    
-    //funcion multiplicacion
-    function multiplicacion(uint _a, uint _b) public pure returns(uint){
+
+    //multiplication function
+    function multiplication(uint _a, uint _b) public pure returns (uint){
         return _a.mul(_b);
     }
-    
 }
