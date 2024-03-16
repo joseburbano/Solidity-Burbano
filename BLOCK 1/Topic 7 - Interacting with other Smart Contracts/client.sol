@@ -2,7 +2,7 @@
 //Indicates the version
 pragma solidity >=0.4.4 <0.7.0;
 //import "./Banco.sol";
-import {Banco, Banco2} from "./Banco.sol";
+import {Bank, Banco2} from "./bank.sol";
 
 
 contract Client is Banco{

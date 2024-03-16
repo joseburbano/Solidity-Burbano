@@ -4,27 +4,26 @@ pragma solidity >=0.4.4 <0.7.0;
 
 contract Bank {
 
-    //Definimos un tipo de dato complejo cliente
-    struct cliente {
-        string _nombre;
-        address direccion;
-        uint dinero;
+    //We define a complex data type customer
+    struct client {
+        string _name;
+        address _addresses;
+        uint _money;
     }
 
-    //mapping que nos relacionar el nombre del cliente con el tipo de dato cliente
-    mapping(string => cliente) clientes;
+    //mapping that relates the customer name to the customer data type
+    mapping(string => client) customers;
 
-    //Funcion que nos permita dar de alta un nuevo cliente
-
-    function nuevoCliente(string memory _nombre) public {
-        clientes[_nombre] = cliente(_nombre, msg.sender, 0);
+    //Function that allows us to register a new customer.
+    function newClient(string memory _name) public {
+        customers[_name] = client(_name, msg.sender, 0);
     }
 }
 
-contract Banco2 {
+contract Bank2 {
 
 }
 
-contract Banco3 {
+contract Bank3 {
 
 }
