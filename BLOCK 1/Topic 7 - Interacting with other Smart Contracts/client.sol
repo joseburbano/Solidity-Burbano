@@ -5,7 +5,7 @@ pragma solidity >=0.4.4 <0.7.0;
 import {Banco, Banco2} from "./Banco.sol";
 
 
-contract Cliente is Banco{
+contract Client is Banco{
 
     function AltaCliente(string memory _nombre) public{
         nuevoCliente(_nombre);
