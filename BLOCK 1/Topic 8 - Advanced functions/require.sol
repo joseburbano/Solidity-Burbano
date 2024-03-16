@@ -1,9 +1,9 @@
 // SPDX-License-Identifier: MIT
-//Indicar la version
+//Indicates the version
 pragma solidity >=0.4.4 <0.7.0;
 pragma experimental ABIEncoderV2;
 
-contract Rquire{
+contract Require{
     
     //Funcion que verfique la contraseña
     function password(string memory _pas) public pure returns(string memory){

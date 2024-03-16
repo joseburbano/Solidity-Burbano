@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: MIT
-//Indicar la version
+//Indicates the version
 pragma solidity >=0.4.4 <0.7.0;
 
 contract Modifer{

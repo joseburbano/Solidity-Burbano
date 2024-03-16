@@ -1,42 +1,40 @@
 // SPDX-License-Identifier: MIT
-//Indicar la version
+//Indicates the version
 pragma solidity >=0.4.4 0.7.0;
 
-contract Comida{
-    
-    struct plato{
-        string nombre;
-        string ingredientes;
-        uint tiempo;
+contract Foot {
+
+    struct dish {
+        string name;
+        string ingredients;
+        uint time;
     }
-    //Declarar un array dinamico de platos
-    plato [] platos;
-    //Relacionamos con un mapping el nombre del plato con sus ingredientes
-    mapping(string => string) ingredientes;
-    
-    //Funcion que nos permite dar de alta un nuevo plato 
-    function NuevoPlato(string memory _nombre, string memory _ingredientes, uint _tiempo) internal{
-        platos.push(plato(_nombre, _ingredientes, _tiempo));
-        ingredientes[_nombre] = _ingredientes;
+    //Declare a dynamic array of plates
+    dish [] dishes;
+    //We relate with a mapping the name of the dish with its ingredients.
+    mapping(string => string) ingredients;
+
+    //Function that allows us to register a new plate
+    function NewDish(string memory _name, string memory _ingredients, uint _time) internal {
+        dishes.push(dish(_name, _ingredients, _time));
+        ingredients[_name] = _ingredients;
     }
-    
-    function Ingredientes(string memory _nombre) internal view returns(string memory){
-        return ingredientes[_nombre];
+
+    function Ingredients(string memory _name) internal view returns (string memory){
+        return ingredients[_name];
     }
-    
+
 }
 
-contract Sandwitch is Comida{
-    
-    function sandwitch(string memory _ingredientes, uint _tiempo) external{
-        NuevoPlato("Sandwitch", _ingredientes, _tiempo);
+contract Sandwitch is Foot {
+
+    function sandwitch(string memory _ingredients, uint _time) external {
+        NuevoPlato("Sandwitch", _ingredients, _time);
     }
-    
-    function verIngredientes() external view returns (string memory){
-        return Ingredientes("Sandwitch");
+
+    function viewIngredients() external view returns (string memory){
+        return Ingredients("Sandwitch");
     }
-    
-    
 }
 
 
