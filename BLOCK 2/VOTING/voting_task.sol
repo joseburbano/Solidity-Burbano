@@ -43,7 +43,7 @@ contract votingTask {
         //We store the hash of the candidate's data linked to his or her name
         ID_Candidate[namePerson] = hash_Candidate;
         //We store the candidate's name
-        candidatos.push(namePerson);
+        candidates.push(namePerson);
     }
 
     //Allows you to view the people who have presented themselves as candidates for voting.
