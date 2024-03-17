@@ -36,7 +36,7 @@ contract votingTask {
 
     //Any person can use this function to run for election.
     function Represent(string memory namePerson, uint _agePerson, string memory _idPerson) public {
-        //Tenemos la mitad del tiempo total para que se presenten candidatos
+        //We have half of the total time for candidates to apply.
         require(now <= (start_voting + 1 minutes) / 2, "Candidates can no longer be nominated");
         //Candidate data hash
         bytes32 hash_Candidate = keccak256(abi.encodePacked(namePerson, _agePerson, _idPerson));
