@@ -1,45 +1,35 @@
 // SPDX-License-Identifier: MIT
 pragma solidity >=0.4.4 < 0.7.0;
 pragma experimental ABIEncoderV2;
+
 import "./SafeMath.sol";
-
-
 
 //Juan Gabriel ---> 0x5B38Da6a701c568545dCfcB03FcB875f56beddC4
 //Juan Amengual ---> 0xAb8483F64d9C6d1EcF9b849Ae677dD3315835cb2
-//María Santos ---> 0x4B20993Bc481177ec7E8f571ceCaE8A9e22C02db
+//Maria Santos ---> 0x4B20993Bc481177ec7E8f571ceCaE8A9e22C02db
 
-//Interface de nuestro token ERC20
-interface IERC20{
-    //Devuelve la cantidad de tokens en existencia
+//Interface of our ERC20 token
+interface IERC20 {
+    //Returns the number of tokens in stock
     function totalSupply() external view returns (uint256);
-
-    //Devuelve la cantidad de rokens para una dirección indicada por parámetro
+    //Returns the number of tokens for an address specified by parameter
     function balanceOf(address account) external view returns (uint256);
-
-    //Devuelve el número de token que el spender podrá gastar en nombre del propietario (owner)
+    //Returns the number of tokens that the spender will be able to spend on behalf of the owner.
     function allowance(address owner, address spender) external view returns (uint256);
-
-    //Devuelve un valor booleano resultado de la operación indicada
+    //Returns a boolean value resulting from the specified operation
     function transfer(address recipient, uint256 amount) external returns (bool);
-
-    //Devuelve un valor booleano con el resultado de la operación de gasto
+    //Returns a boolean value with the result of the expense operation
     function approve(address spender, uint256 amount) external returns (bool);
-
-    //Devuelve un valor booleano con el resultado de la operación de paso de una cantidad de tokens usando el método allowance()
+    //Returns a boolean value with the result of the operation of passing a number of tokens using the method allowance()
     function transferFrom(address sender, address recipient, uint256 amount) external returns (bool);
-
-
-
-    //Evento que se debe emitir cuando una cantidad de tokens pase de un origen a un destino
+    //Event to be emitted when a quantity of tokens passes from an origin to a destination.
     event Transfer(address indexed from, address indexed to, uint256 value);
-
-    //Evento que se debe emitir cuando se establece una asignación con el mmétodo allowance()
+    //Event to be emitted when an assignment is established with the allowance() method.
     event Approval(address indexed owner, address indexed spender, uint256 value);
 }
 
-//Implementación de las funciones del token ERC20
-contract ERC20Basic is IERC20{
+//Implementation of ERC20 token functions
+contract ERC20Basic is IERC20 {
 
     string public constant name = "ERC20BlockchainAZ";
     string public constant symbol = "ERC";
@@ -51,11 +41,11 @@ contract ERC20Basic is IERC20{
 
     using SafeMath for uint256;
 
-    mapping (address => uint) balances;
-    mapping (address => mapping (address => uint)) allowed;
+    mapping(address => uint) balances;
+    mapping(address => mapping(address => uint)) allowed;
     uint256 totalSupply_;
 
-    constructor (uint256 initialSupply) public{
+    constructor (uint256 initialSupply) public {
         totalSupply_ = initialSupply;
         balances[msg.sender] = totalSupply_;
     }
