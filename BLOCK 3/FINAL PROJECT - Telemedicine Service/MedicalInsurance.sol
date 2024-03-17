@@ -2,7 +2,7 @@
 pragma solidity >=0.4.4 <0.7.0;
 pragma experimental ABIEncoderV2;
 import "./OperacionesBasicas.sol";
-import "./ERC20.sol";
+import "../../../BLOCK 3/FINAL PROJECT - Telemedicine Service/ERC20.sol";
 
 // Contrato para la Compañia de Seguros
 contract InsuranceFactory is OperacionesBasicas{

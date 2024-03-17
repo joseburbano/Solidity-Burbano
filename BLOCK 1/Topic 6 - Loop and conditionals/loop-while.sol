@@ -2,75 +2,67 @@
 //Indicates the version
 pragma solidity >=0.4.4 <0.7.0;
 
-contract bucle_while{
+contract loopWhile {
 
-    //Suma de los numeros impares menores o iguales 100
+    //Sum of odd numbers less than or equal to 100
+    function odd_sum() public pure returns (uint){
+        uint sum = 0;
+        uint conter = 1;
 
-    function suma_impares() public pure returns(uint){
+        while (conter < 100) {
 
-        uint suma =0;
-        uint contador=1;
-
-        while(contador<100){
-
-            if(contador%2!=0){
-                suma = suma + contador;
+            if (conter % 2 != 0) {
+                sum = sum + conter;
             }
-
-            contador++;
+            conter++;
         }
-
-        return suma;
+        return sum;
     }
 
-    //Esperar 5 segundos
+    //Wait 5 seconds
 
-    uint tiempo;
+    uint time;
 
-    function fijarTiempo() public{
-        tiempo = now;
+    function setTime() public {
+        time = now;
     }
 
-    function espera() public view returns(bool){
+    function wait() public view returns (bool){
 
-        while(now < tiempo+ 5 seconds){
+        while (now < time + 5 seconds) {
             return false;
         }
-
         return true;
     }
 
-    //Siguiente numero primo
-    //Numero primo es aquel que es divisible entre 1 y el mismo
+    //Next prime number
+    //Prime number is a number that is divisible by 1 and the same number.
+    function nextPrime(uint _p) public pure returns (uint){
 
-    function siguientePrimo(uint _p) public pure returns(uint){
+        uint conter = _p + 1;
 
-        uint contador =_p+1;
+        while (true) {
 
-        while(true){
+            //We check if the counter is prime
+            uint aux = 2;
+            bool prime = true;
 
-            //Comprobamos si contador es primo
-            uint aux=2;
-            bool primo =true;
-
-            while(aux<contador){
-                if(contador%aux==0){
-                    primo =false;
+            while (aux < conter) {
+                if (conter % aux == 0) {
+                    prime = false;
                     break;
                 }
                 aux++;
             }
 
-            if(primo==true){
+            if (prime == true) {
                 break;
             }
 
-            contador++;
-
+            conter++;
         }
-        return contador;
+        return conter;
     }
-
 }
 
 
